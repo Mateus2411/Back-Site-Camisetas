@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:3000/camisetas/getall)",
+      "Bash(curl -s -X POST http://localhost:3000/camisetas/create -H \"Content-Type: application/json\" -d '{\"\"namePerson\"\":\"\"Joao Silva\"\",\"\"nunShirt\"\":10}')",
+      "Bash(curl -s -X POST http://localhost:3000/camisetas/create -H \"Content-Type: application/json\" -d '{\"\"namePerson\"\":\"\"Maria Santos\"\",\"\"nunShirt\"\":7}')",
+      "Bash(curl -s -X POST http://localhost:3000/camisetas/create -H \"Content-Type: application/json\" -d '{\"\"namePerson\"\":\"\"Pedro Teste\"\",\"\"nunShirt\"\":10}')",
+      "Bash(curl -s http://localhost:3000/camisetas:66d319be-cf53-4e07-aa5d-33d702ed89a7)",
+      "Bash(curl -s http://localhost:3000/camisetas:key-invalida)",
+      "Bash(curl -s http://localhost:3000/camisetas/66d319be-cf53-4e07-aa5d-33d702ed89a7)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3000)",
+      "Bash(taskkill:*)",
+      "Bash(curl -s -X POST http://localhost:3000/camisetas/create -H \"Content-Type: application/json\" -d '{\"\"namePerson\"\":\"\"Teste User\"\",\"\"nunShirt\"\":99}')",
+      "Bash(curl -s http://localhost:3000/camisetas/b1408add-b8f0-47ef-a864-8e197113081b)",
+      "Bash(curl -s -X PUT http://localhost:3000/camisetas/update/b1408add-b8f0-47ef-a864-8e197113081b -H \"Content-Type: application/json\" -d '{\"\"namePerson\"\":\"\"Usuario Atualizado\"\",\"\"nunShirt\"\":88}')",
+      "Bash(curl -s -X DELETE http://localhost:3000/camisetas/b1408add-b8f0-47ef-a864-8e197113081b)",
+      "Bash(dir:*)"
+    ]
+  },
+  "disabledMcpjsonServers": [
+    "supabase"
+  ]
+}
