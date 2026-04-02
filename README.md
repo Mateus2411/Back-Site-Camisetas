@@ -4,25 +4,31 @@ API REST para gerenciamento de camisetas personalizadas.
 
 ## Tecnologias
 
-- Node.js
-- Express
-- SQLite3
+Node.js · Express · SQLite3
 
 ## Endpoints
 
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| `POST` | `/camisetas/create` | Criar camiseta |
+| `GET` | `/camisetas/getall` | Listar todas |
+| `POST` | `/camisetas/get` | Buscar por key |
+| `PUT` | `/camisetas/update` | Atualizar camiseta |
+| `DELETE` | `/camisetas/delete` | Deletar camiseta |
+
 ### Criar Camiseta
 
-```http
-POST /camisetas/create
-Content-Type: application/json
+`POST /camisetas/create`
 
+```json
 {
   "namePerson": "João Silva",
   "nunShirt": 10
 }
 ```
 
-**Resposta (201):**
+<details>
+<summary>Resposta 201</summary>
 
 ```json
 {
@@ -35,15 +41,14 @@ Content-Type: application/json
 }
 ```
 
----
+</details>
 
-### Listar Todas as Camisetas
+### Listar Todas
 
-```http
-GET /camisetas/getall
-```
+`GET /camisetas/getall`
 
-**Resposta (200):**
+<details>
+<summary>Resposta 200</summary>
 
 ```json
 {
@@ -58,48 +63,34 @@ GET /camisetas/getall
 }
 ```
 
----
+</details>
 
-### Buscar Camiseta por Key
+### Buscar por Key
 
-```http
-POST /camisetas/get
-Content-Type: application/json
-
-{
-  "key": "uuid-v4"
-}
-```
-
-**Resposta (200):**
+`POST /camisetas/get`
 
 ```json
-{
-  "shirt": {
-    "id": 1,
-    "nun_shirt": 10,
-    "name_person": "João Silva",
-    "key": "uuid-v4"
-  }
-}
+{ "key": "uuid-v4" }
 ```
 
-**Resposta (404):**
+<details>
+<summary>Resposta 200 / 404</summary>
 
 ```json
-{
-  "msg": "Camisa não encontrada"
-}
+{ "shirt": { "id": 1, "nun_shirt": 10, "name_person": "João Silva", "key": "uuid-v4" } }
 ```
 
----
+```json
+{ "msg": "Camisa não encontrada" }
+```
+
+</details>
 
 ### Atualizar Camiseta
 
-```http
-PUT /camisetas/update
-Content-Type: application/json
+`PUT /camisetas/update`
 
+```json
 {
   "key": "uuid-v4",
   "namePerson": "Maria Santos",
@@ -107,36 +98,31 @@ Content-Type: application/json
 }
 ```
 
-**Resposta (200):**
+<details>
+<summary>Resposta 200</summary>
 
 ```json
-{
-  "msg": "Camisa atualizada com sucesso"
-}
+{ "msg": "Camisa atualizada com sucesso" }
 ```
 
----
+</details>
 
 ### Deletar Camiseta
 
-```http
-DELETE /camisetas/delete
-Content-Type: application/json
-
-{
-  "key": "uuid-v4"
-}
-```
-
-**Resposta (200):**
+`DELETE /camisetas/delete`
 
 ```json
-{
-  "msg": "Camisa deletada com sucesso"
-}
+{ "key": "uuid-v4" }
 ```
 
----
+<details>
+<summary>Resposta 200</summary>
+
+```json
+{ "msg": "Camisa deletada com sucesso" }
+```
+
+</details>
 
 ## Como Rodar
 
@@ -145,4 +131,4 @@ npm install
 npm start
 ```
 
-O servidor rodará em `http://localhost:3000`
+Servidor roda em `http://localhost:3000`
