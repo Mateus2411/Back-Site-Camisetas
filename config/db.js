@@ -5,7 +5,7 @@ const db = new sqlite3.Database(path.join(__dirname, "..", "database.sqlite"));
 
 db.serialize(() => {
   db.run(`
-    CREATE TABLE camisetas_selecionadas (
+    CREATE TABLE IF NOT EXISTS camisetas_selecionadas (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       nun_shirt INTEGER NOT NULL UNIQUE,
       name_person TEXT NOT NULL,
