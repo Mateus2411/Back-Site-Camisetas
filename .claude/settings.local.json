@@ -21,7 +21,8 @@
       "Bash(npm start:*)",
       "Bash(powershell -Command \"\\(Get-Item '.'\\).Length\")",
       "Bash(powershell -Command \"\\(\\(Get-ChildItem 'node_modules' -Recurse | Measure-Object -Property Length -Sum\\).Sum / 1MB\\) -as [int]\")",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(powershell -Command \"\\(\\(Get-ChildItem '.' -Recurse | Measure-Object -Property Length -Sum\\).Sum / 1MB\\) -as [int]\")"
     ]
   },
   "disabledMcpjsonServers": [
