@@ -15,7 +15,13 @@
       "Bash(curl -s http://localhost:3000/camisetas/b1408add-b8f0-47ef-a864-8e197113081b)",
       "Bash(curl -s -X PUT http://localhost:3000/camisetas/update/b1408add-b8f0-47ef-a864-8e197113081b -H \"Content-Type: application/json\" -d '{\"\"namePerson\"\":\"\"Usuario Atualizado\"\",\"\"nunShirt\"\":88}')",
       "Bash(curl -s -X DELETE http://localhost:3000/camisetas/b1408add-b8f0-47ef-a864-8e197113081b)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(npm start:*)",
+      "Bash(powershell -Command \"\\(Get-Item '.'\\).Length\")",
+      "Bash(powershell -Command \"\\(\\(Get-ChildItem 'node_modules' -Recurse | Measure-Object -Property Length -Sum\\).Sum / 1MB\\) -as [int]\")",
+      "Bash(curl:*)"
     ]
   },
   "disabledMcpjsonServers": [
