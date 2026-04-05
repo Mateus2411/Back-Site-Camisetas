@@ -32,7 +32,6 @@ const getAllShirts = () => {
     id: row[0],
     nun_shirt: row[1],
     name_person: row[2],
-    key: row[3]
   }));
 };
 
