@@ -6,19 +6,22 @@ API REST para gerenciamento de camisetas personalizadas.
 
 Node.js · Express · SQLite3
 
+## Como Rodar
+
+```bash
+npm install
+npm start
+```
+
+Servidor roda em `http://localhost:3000`
+
+---
+
 ## Endpoints
 
-| Método | Rota | Descrição |
-|--------|------|-----------|
-| `POST` | `/camisetas/create` | Criar camiseta |
-| `GET` | `/camisetas/getall` | Listar todas |
-| `POST` | `/camisetas/get` | Buscar por key |
-| `PUT` | `/camisetas/update` | Atualizar camiseta |
-| `DELETE` | `/camisetas/delete` | Deletar camiseta |
+### `POST /camisetas/create` — Criar camiseta
 
-### Criar Camiseta
-
-`POST /camisetas/create`
+**Request:**
 
 ```json
 {
@@ -27,8 +30,7 @@ Node.js · Express · SQLite3
 }
 ```
 
-<details>
-<summary>Resposta 201 (key gerada automaticamente)</summary>
+**Response 201:**
 
 ```json
 {
@@ -38,17 +40,17 @@ Node.js · Express · SQLite3
     "nameperson": "João Silva",
     "key": "uuid-v4"
   },
+  "key": "uuid-v4"
 }
 ```
 
-</details>
+> A `key` é um UUID v4 gerado automaticamente com `crypto.randomUUID()`. Ela é enviada tanto dentro do objeto `shirt` quanto no campo `key` na raiz da resposta.
 
-### Listar Todas
+---
 
-`GET /camisetas/getall`
+### `GET /camisetas/getall` — Listar todas as camisetas
 
-<details>
-<summary>Resposta 200</summary>
+**Response 200:**
 
 ```json
 {
@@ -63,32 +65,44 @@ Node.js · Express · SQLite3
 }
 ```
 
-</details>
+---
 
-### Buscar por Key
+### `POST /camisetas/get` — Buscar camiseta por key
 
-`POST /camisetas/get`
-
-```json
-{ "key": "uuid-v4" }
-```
-
-<details>
-<summary>Resposta 200 / 404</summary>
+**Request:**
 
 ```json
-{ "shirt": { "id": 1, "nun_shirt": 10, "name_person": "João Silva", "key": "uuid-v4" } }
+{
+  "key": "uuid-v4"
+}
 ```
+
+**Response 200:**
 
 ```json
-{ "msg": "Camisa não encontrada" }
+{
+  "shirt": {
+    "id": 1,
+    "nun_shirt": 10,
+    "name_person": "João Silva",
+    "key": "uuid-v4"
+  }
+}
 ```
 
-</details>
+**Response 404:**
 
-### Atualizar Camiseta
+```json
+{
+  "msg": "Camisa não encontrada"
+}
+```
 
-`PUT /camisetas/update`
+---
+
+### `PUT /camisetas/update` — Atualizar camiseta
+
+**Request:**
 
 ```json
 {
@@ -98,37 +112,66 @@ Node.js · Express · SQLite3
 }
 ```
 
-<details>
-<summary>Resposta 200</summary>
+**Response 200:**
 
 ```json
-{ "msg": "Camisa atualizada com sucesso" }
+{
+  "msg": "Camisa atualizada com sucesso"
+}
 ```
 
-</details>
-
-### Deletar Camiseta
-
-`DELETE /camisetas/delete`
+**Response 404:**
 
 ```json
-{ "key": "uuid-v4" }
+{
+  "msg": "Camisa não encontrada"
+}
 ```
 
-<details>
-<summary>Resposta 200</summary>
+**Response 400:**
 
 ```json
-{ "msg": "Camisa deletada com sucesso" }
+{
+  "msg": "Numero de camisa ja em utilização"
+}
 ```
 
-</details>
+---
 
-## Como Rodar
+### `DELETE /camisetas/delete` — Deletar camiseta
 
-```bash
-npm install
-npm start
+**Request:**
+
+```json
+{
+  "key": "uuid-v4"
+}
 ```
 
-Servidor roda em `http://localhost:3000`
+**Response 200:**
+
+```json
+{
+  "msg": "Camisa deletada com sucesso"
+}
+```
+
+**Response 404:**
+
+```json
+{
+  "msg": "Camisa não encontrada"
+}
+```
+
+---
+
+## Resumo
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| `POST` | `/camisetas/create` | Cria camiseta e retorna a `key` gerada |
+| `GET` | `/camisetas/getall` | Lista todas as camisetas |
+| `POST` | `/camisetas/get` | Busca uma camiseta pela `key` |
+| `PUT` | `/camisetas/update` | Atualiza dados da camiseta |
+| `DELETE` | `/camisetas/delete` | Remove uma camiseta |
