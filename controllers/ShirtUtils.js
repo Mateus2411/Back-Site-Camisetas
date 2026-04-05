@@ -19,7 +19,7 @@ const newShirt = async (req, res) => {
 
     const key = crypto.randomUUID();
     const shirt = await createShirt(nunShirt, namePerson, key);
-    res.status(201).json({ shirt });
+    res.status(201).json({ shirt, key });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

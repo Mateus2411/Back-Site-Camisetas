@@ -28,7 +28,7 @@ Node.js · Express · SQLite3
 ```
 
 <details>
-<summary>Resposta 201</summary>
+<summary>Resposta 201 (key gerada automaticamente)</summary>
 
 ```json
 {
@@ -37,7 +37,7 @@ Node.js · Express · SQLite3
     "nunshirt": 10,
     "nameperson": "João Silva",
     "key": "uuid-v4"
-  }
+  },
 }
 ```
 
